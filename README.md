@@ -103,10 +103,20 @@ Select **raw** and **JSON** format, you can paste the example below:
 ## What I Practiced
 - **LLM Integration:** Connecting a Java backend to external AI models and parsing complex JSON/String responses into structured Java objects.  
 - **Spring Boot Fundamentals:** Implementing the full MVC stack (REST Controllers, Service Layers, and Repository Patterns).
-- **API Testing & Documentation: Using Postman to verify REST endpoints, manage Request Headers (Bearer Tokens), and validate JSON response structures.
+- **API Testing & Documentation:** Using Postman to verify REST endpoints, manage Request Headers (Bearer Tokens), and validate JSON response structures.
 - **Asynchronous Communication:** Using the JavaScript Fetch API to handle data flow without refreshing the page.  
 - **Secure Coding:** Using `.gitignore` to prevent sensitive configuration files (such as `application.properties`) from being exposed in public repositories, ensuring API credentials remain private.  
 
 ## Future Improvements
 - **Enhanced UI/UX:** Improving mobile responsiveness and adding a dashboard for support agents.  
-- **Input Validation:** Implementing stricter server-side validation for user comments.  
+- **Input Validation:** Implementing stricter server-side validation for user comments.
+
+---
+
+## 💬 Final Words 💬
+
+This project was a fantastic challenge for me. While I have previously worked on a small LLM-related Python assignment during my university studies, it was very limited in scope. This project was my first time integrating such a capable, large-scale system into a full-stack Spring Boot application, and it significantly pushed my development skills forward.
+
+Building PulseDesk allowed me to practice bridging the gap between AI potential and real-world software solutions. It was a great learning experience, and I enjoyed every step of the process!
+
+**Thank you for your time and for this opportunity! ✨**
