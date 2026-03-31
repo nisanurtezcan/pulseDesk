@@ -20,8 +20,6 @@ The goal is to bridge the gap between customer feedback and technical support. T
 
 ## Screenshots
 
-## Screenshots
-
 | Feature | Preview | Description |
 | :--- | :--- | :--- |
 | **How AI Works** | ![AI Analysis](myScreenshots/1buttonsPressed.png) | When a user sends a complaint, the AI creates a title, category, and priority automatically. |
@@ -72,11 +70,39 @@ http://localhost:8080 or http://localhost:8080/index.html
   http://localhost:8080/tickets  
 
 - `GET /tickets/{id}` – View a specific ticket  
-  http://localhost:8080/tickets/{ticketId}  
+  http://localhost:8080/tickets/{ticketId}
+
+
+## API Testing with Postman
+
+If you want to test the backend directly using Postman, follow these steps to ensure the AI integration works correctly (You can check 3rd screenshot above to see an example result):
+
+### 1. Request Configuration
+- **Method:** `POST`
+- **URL:** `http://localhost:8080/comments`
+
+### 2. Headers & Authentication
+You need to provide your Hugging Face API Key to authorize the AI processing:
+
+- **Authorization:** - Go to the **Auth** tab in Postman.
+  - Select **Bearer Token**.
+  - Paste your `Hugging Face API Key` here.
+- **Headers:**
+  - `Content-Type`: `application/json`
+  - `Authorization`: `Bearer YOUR_HUGGINGFACE_API_KEY`
+
+### 3. Request Body
+Select **raw** and **JSON** format, you can paste the example below:
+
+```json
+{
+  "commentText": "Sometimes the system does not keep my input after I refresh the page. It is a small issue, but it can be a bit annoying if I accidentally reload and lose what I wrote."
+}
 
 ## What I Practiced
 - **LLM Integration:** Connecting a Java backend to external AI models and parsing complex JSON/String responses into structured Java objects.  
-- **Spring Boot Fundamentals:** Implementing the full MVC stack (REST Controllers, Service Layers, and Repository Patterns).  
+- **Spring Boot Fundamentals:** Implementing the full MVC stack (REST Controllers, Service Layers, and Repository Patterns).
+- **API Testing & Documentation: Using Postman to verify REST endpoints, manage Request Headers (Bearer Tokens), and validate JSON response structures.
 - **Asynchronous Communication:** Using the JavaScript Fetch API to handle data flow without refreshing the page.  
 - **Secure Coding:** Using `.gitignore` to prevent sensitive configuration files (such as `application.properties`) from being exposed in public repositories, ensuring API credentials remain private.  
 
