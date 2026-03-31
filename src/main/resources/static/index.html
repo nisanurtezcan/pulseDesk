@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>PulseDesk</title>
+	<style>
+	    /* Sayfanın genel merkezi yerleşimi */
+	    body { 
+	        font-family: "Serif", "Garamond", monospace; 
+	        background: #DABECA;
+	        margin: 0;
+	        display: flex;
+	        justify-content: center;
+	        padding-top: 50px;
+	    }
+
+	    .main-layout {
+	        display: flex;       
+	        flex-direction: row;
+	        gap: 30px;          
+	        align-items: flex-start; 
+	        max-width: 900px;  
+	    }
+
+	    .container, .containerComments { 
+	        background: #E3D8F1; 
+	        padding: 25px; 
+	        border-radius: 12px; 
+	        box-shadow: 0 10px 20px rgba(0,0,0,0.15); 
+	        width: 400px; /* Kutuların sabit genişliği */
+	    }
+
+	    /*Responsive design */
+	    @media (max-width: 850px) {
+	        .main-layout {
+	            flex-direction: column;
+	            align-items: center;
+	        }
+	    }
+
+
+		textarea { width: 100%; min-height: 150px; max-height: 600px; border-radius: 10px; border: 3px solid #5D5F71; padding: 10px; box-sizing: border-box; resize: vertical}
+	    button { cursor: pointer; border-radius: 10px; background: #5D5F71; color: white; padding: 10px; border: none; width: 100%; margin-top: 10px; margin-bottom: 10px}
+	    button:hover { background: #AD8A64; }
+	</style>
+</head>
+<body>
+    <div class="main-layout">
+        
+		<div class="container">
+		        <h2>PulseDesk</h2>
+		        <h3>Give us a comment to improve our quality!</h3>
+		        <textarea id="commentInput" placeholder="Write your comment here. (Max char: 1000)"></textarea>
+		        <button onclick="sendComment()">Send</button>
+		        <div id="result"></div>
+		    </div>
+
+		    <div class="containerComments">
+		        <h2>Recent Comments</h2>
+		        <div id="commentsList">
+		            </div>
+		        <button onclick="loadComments()">Refresh List</button>
+		    </div>
+
+    </div>
+</body>
+
+<script>
+	//Sending a comment
+    async function sendComment() {
+        const content = document.getElementById('commentInput').value;
+        const resultDiv = document.getElementById('result');
+        
+        resultDiv.style.display = 'block';
+        resultDiv.innerHTML = "Let's take a look...";
+
+        try {
+            const response = await fetch('/comments', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ content: content })
+            });
+
+            const data = await response.json();
+
+            if (data.ticket) {
+                resultDiv.innerHTML = `
+                    <div class="ticket-box">
+                        <strong>Your ticket has been created!</strong><br>
+                        <b>Title: </b> ${data.ticket.title}<br>
+                        <b>Category: </b> ${data.ticket.category}<br>
+                        <b>Priority: </b> ${data.ticket.priority}<br>
+						<b>Summary: </b> ${data.ticket.summary || 'Summary not found!'}
+						
+                    </div>`;
+            } else {
+                resultDiv.innerHTML = "Thanks for your comment! We received it.";
+            }
+        } catch (error) {
+            resultDiv.innerHTML = "An error occured.";
+        }
+    }
+	
+	//Viewing the comment
+	async function loadComments(){
+		const listDiv = document.getElementById('commentsList');
+		
+		try{
+			const response = await fetch('/comments');
+			const comments = await response.json();
+			
+			listDiv.innerHTML = '';
+			
+			for(let i = 0; i < comments.length; i++){
+				const c = comments[i];
+				
+				let ticketInfo = "";
+				if(c.ticket){
+					ticketInfo = "(Ticket: " + c.ticket.priority + ")";	
+				}
+				
+				listDiv.innerHTML += `<div style="margin-bottom: 1px solid #ccc;">
+				<p>${c.content} - ${ticketInfo}</p>
+				</div>`;
+				
+			}
+			
+		} catch (error){
+			listDiv.innerHTML = "Problem with showing the data!";
+		}
+	}
+	
+	
+	
+	
+	
+</script>
+
+</body>
+</html>
