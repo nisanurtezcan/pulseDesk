@@ -119,4 +119,4 @@ This project was a fantastic challenge for me. While I have previously worked on
 
 Building PulseDesk allowed me to practice bridging the gap between AI potential and real-world software solutions. It was a great learning experience, and I enjoyed every step of the process!
 
-**Thank you for your time and for this opportunity! ✨**
+**Thank you for your time and for this opportunity! ☕✨**
