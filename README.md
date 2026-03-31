@@ -20,10 +20,10 @@ The goal is to bridge the gap between customer feedback and technical support. T
 
 ## Screenshots
 
-| **How AI Works** | ![AI Analysis](./screenshots/1buttonsPressed.png) | When a user sends a complaint, the AI creates a title, category, and priority automatically. |
-| **Positive Comments** | ![Positive Feedback](./screenshots/2positiveComment.png) | If the comment is positive, the system just responds with a simple message and does not create a ticket. |
-| **Postman Test** | ![API Testing](./screenshots/8testInPostman.png) | Backend and API endpoints tested in Postman, showing JSON responses. |
-| **Comment History** | ![History List](./screenshots/4pageAfterPostman.png) | A list where all previous comments and ticket priority results can be viewed. |
+| **How AI Works** | (./screenshots/1buttonsPressed.png) | When a user sends a complaint, the AI creates a title, category, and priority automatically. |
+| **Positive Comments** | (./screenshots/2positiveComment.png) | If the comment is positive, the system just responds with a simple message and does not create a ticket. |
+| **Postman Test** | (./screenshots/8testInPostman.png) | Backend and API endpoints tested in Postman, showing JSON responses. |
+| **Comment History** | (./screenshots/4pageAfterPostman.png) | A list where all previous comments and ticket priority results can be viewed. |
 
 
 ## How to Run
