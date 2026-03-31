@@ -13,6 +13,8 @@ Database: H2 Database (In memory)
 
 AI Integration: Hugging Face Inference API (Qwen/Qwen2.5-72B-Instruct)
 
+Postman: For testing purposes
+
 # Key Features
 
 Intelligent Analysis: Automatically distinguishes between compliments and functional complaints.
@@ -25,4 +27,54 @@ Simple UI: A clean interface to submit feedback and view the real-time "Pulse" o
 
 # How to Run
 
+1. Clone the repository
+
+```bash
 git clone https://github.com/nisanurtezcan/pulseDesk.git
+```
+
+2. Set up the API key
+For security, the API key should not be not hardcoded. You should set your Hugging Face API key as an environment variable:
+```bash
+Windows (CMD): set HUGGINGFACE_API_KEY=your_key_here
+
+Linux/Mac: export HUGGINGFACE_API_KEY="your_key_here"
+```
+
+Alternatively, for local testing, you can add huggingface.api.key=your_key to your src/main/resources/application.properties file.
+
+3. Run the Application
+Environment Note:
+
+I personally developed and tested this application using Spring Tool Suite 4 (STS). However, it is fully compatible with any Java IDE (IntelliJ, Eclipse, etc.) or can be run directly via Maven.
+
+4. Access the App
+
+Open your browser and navigate to: http://localhost:8080 or http://localhost:8080/index.html
+
+Available Endpoints:
+
+GET /comments - View all submitted comments. http://localhost:8080/comments
+
+
+GET /tickets - View all AI-generated tickets. http://localhost:8080/tickets
+
+
+GET /tickets/{id} - View a specific ticket detail. http://localhost:8080/tickets/{ticketId}
+
+
+# What I Practiced
+
+- LLM Integration: Connecting a Java backend to external AI models and parsing complex JSON/String responses into structured Java objects.
+
+- Spring Boot Fundamentals: Implementing the full MVC stack (REST Controllers, Service Layers, and Repository Patterns).
+
+- Asynchronous Communication: Using the JavaScript Fetch API to handle data flow without refreshing the page.
+
+- Secure Coding: Using .gitignore to prevent sensitive configuration files (application.properties) from being leaked to public repositories, ensuring API credentials remain private.
+
+# Future Improvements
+
+Enhanced UI/UX: Improving mobile responsiveness and adding a dashboard for support agents.
+
+Input Validation: Implementing stricter server-side validation for user comments.
